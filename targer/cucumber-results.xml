@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite failures="0" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="1" time="71.428012">
+<testcase classname="Navigate search validation" name=": Search for location on Room5" time="71.428012">
+<system-out><![CDATA[Given Open Browser and enter the "https://room5.trivago.com/"...............passed
+]]></system-out>
+</testcase>
+</testsuite>

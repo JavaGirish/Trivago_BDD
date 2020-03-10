@@ -10,6 +10,7 @@ import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.os.WindowsUtils;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -188,7 +189,7 @@ public class stepDefHelper extends TestClass {
 
     @And("^Selects a country \"([^\"]*)\"$")
     public void selectsACountry(String cntry) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
+        
         searchPage = new SearchPage();
         searchPage.select_dropdown(cntry);
     }
@@ -203,11 +204,24 @@ public class stepDefHelper extends TestClass {
     @And("^User clicks home trivago logo$")
     public void userClicksHomeTrivagoLogo() {
         searchPage = new SearchPage();
+        try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			
+			e.printStackTrace();
+		}
         searchPage.home_page();
     }
 
     @Then("^User should navigate back to Home Page$")
     public void userShouldNavigateBackToHomePage() {
 
+    }
+    
+    
+    @And("^close the browser$")
+    public void close_the_browser() {
+    	driver.quit();
+    	WindowsUtils.killByName("chromedriver.exe");
     }
 }

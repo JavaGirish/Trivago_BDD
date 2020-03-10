@@ -2,10 +2,14 @@ package Utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class TestClass {
 
@@ -26,11 +30,19 @@ public class TestClass {
 
         public static void initialization(){
 
-            System.setProperty("webdriver.chrome.driver",".\\src\\main\\java\\Library\\chromedriver.exe");
+            //System.setProperty("webdriver.chrome.driver",".\\src\\main\\java\\Library\\chromedriver.exe");
+        	WebDriverManager.chromedriver().setup();
+        	ChromeOptions op = new ChromeOptions();
+        
+        	op.addArguments("--headless");
+        	op.addArguments("--window-size=1400,800");
             driver = new ChromeDriver();
+            driver.get(properties.getProperty("URL"));
             driver.manage().window().maximize();
             driver.manage().deleteAllCookies();
-            driver.get(properties.getProperty("URL"));
+            
+            driver.manage().timeouts().pageLoadTimeout(2, TimeUnit.MINUTES);
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         }
 
 

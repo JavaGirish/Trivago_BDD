@@ -39,7 +39,7 @@ public class SearchPage extends TestClass {
     @FindBy(xpath = "//*[@id='confirm']")
     WebElement confirm;
 
-    @FindBy(xpath = "//*[@id='app']/div[3]/div/div/div[1]/button/span")
+    @FindBy(css = "button.contact-submit")
     WebElement Submit;
 
     @FindBy(xpath = "//*[@id='app']//*[contains(@placeholder,'Your e-mail address')]")
@@ -62,11 +62,15 @@ public class SearchPage extends TestClass {
 
     @FindBy(xpath = "//div[text()='Southeast']")
     WebElement southeast;
+    
+    @FindBy(xpath = "//div[@class='menu-carousel-container']//div[text()='Destinations']")
+    WebElement destinations;
+   
 
-    @FindBy(xpath = "//*[contains(@class,'locales-dropdown')]")
+    @FindBy(xpath = "//select[@class='locales-dropdown locales-dropdown-v2']")
     WebElement dropdown;
 
-    @FindBy(xpath = "//*[contains(@class,'logo router-link-active')]")
+    @FindBy(xpath = "//a[@class='logo']")
     WebElement logo;
 
     //Intializing the Page Object
@@ -160,7 +164,7 @@ public class SearchPage extends TestClass {
 
     // click midwest destination
     public void click_midwest_destn(){
-
+    	destinations.click();
         midwest.click();
     }
 
@@ -170,7 +174,9 @@ public class SearchPage extends TestClass {
     }
 
     public void navig(){
-        driver.get("https://magazine.trivago.com/destination/usa/northeast/");
+    	driver.navigate().to("https://magazine.trivago.com/destination/usa/northeast/");
+    	
+        
 
     }
     public void click_southeast_destn(){
@@ -179,17 +185,34 @@ public class SearchPage extends TestClass {
 
     // control drop down
     public void setDropdown(){
+    	
         dropdown.click();
     }
 
     // Select a text in drop down
     public void select_dropdown(String drpcountry){
+    	try {
+			Thread.sleep(5000);
+		} 
+    	
+    	catch (InterruptedException e) {
+			
+			e.printStackTrace();
+		}
+    	
         Select country = new Select(dropdown);
         country.selectByVisibleText(drpcountry);
 
     }
 
     public void home_page(){
+    	try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			
+			e.printStackTrace();
+		}
+    	
         logo.click();
     }
 

@@ -1,14 +1,15 @@
-
 Feature: Trivago Website Testing
 
   Background: User is at Trivago Room5 website
 
-  @Test1
-  Scenario: Search for a location on Room5 using search bar
+ 
+ 	@Test1
+   Scenario: Search for a location on Room5 using search bar
      Given Open Browser and input the URL
     When correct link is open by the browser
     Then Click on search menu
     And Enter the location "England" to search hotels
+    And close the browser
 
   @Test2
      Scenario: Fill in the contact form and sent it
@@ -19,6 +20,7 @@ Feature: Trivago Website Testing
       And Input your Email Address
       And Tick the confirmation
       And Submit the button
+      And close the browser
 
     @Test3
     Scenario: Subscribe to the Newsletter
@@ -26,6 +28,7 @@ Feature: Trivago Website Testing
       When User search for newsletter option
       Then input email address
       And Submit the consent to receive newsletter
+      And close the browser
 
 
       @Test4
@@ -34,6 +37,7 @@ Feature: Trivago Website Testing
         When User clicks on the menu button
         And Select a destination "Midwest"
         Then Verify he is navigated to correct destination
+        And close the browser
 
         @Test5
         Scenario: Navigate to a different country through footer locate drop down
@@ -41,6 +45,7 @@ Feature: Trivago Website Testing
           When Clicks on the drop down
           And Selects a country "Brasil"
           Then User should be navigated to different country website
+          And close the browser
 
           @Test6
           Scenario: Navigate to back to Home page through Trivago Logo
@@ -48,3 +53,4 @@ Feature: Trivago Website Testing
             When User is not on the home page
             And User clicks home trivago logo
             Then User should navigate back to Home Page
+            And close the browser
